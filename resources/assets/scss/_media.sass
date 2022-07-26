@@ -1,0 +1,215 @@
+@import "vars"
+
+
+/*==========  Desktop First  ==========*/
+
+// ≥1200px
++media-breakpoint-down(lg)
+	.form-item legend
+		font-size: 14px
+	.content
+		table
+			font-size: 14px
+			td
+				padding-left: 15px
+				padding-right: 15px
+	.order-item
+		padding: 30px 15px
+	.order-green-window .btn
+		font-size: 12px
+	.order-green-window .order-green-item .wrapper
+		margin-bottom: 5px
+	.mini-input-date-2
+		width: 89px !important
+	.user-avatar
+		width: 210px
+		height: 210px
+// ≥992px
++media-breakpoint-down(md)
+	.form-item legend
+		font-size: 16px
+
+	header
+		background: $green
+
+	.logo-box
+		text-align: center
+		margin-bottom: 25px
+		margin-top: 15px
+
+	.menu-serivce 
+		text-align: right
+		ul > li
+			width: 100%
+			text-align: left
+			&:hover
+				ul
+					visibility: visible
+					opacity: 1
+			a
+				width: 100%
+				&:hover
+					background-color: $green
+					color: #fff
+			ul
+				position: relative
+				visibility: visible
+				opacity: 1
+				transition: none
+				display: none
+				li
+					text-align: left
+					width: 100%
+					a
+						padding-left: 60px
+			a, span
+				color: #fff
+				display: inline-block
+				background: $dark
+				padding: 10px 25px
+				position: relative
+				padding-left: 60px
+				width: 100%
+			span
+				background: $dark url(../img/arrow-down.png) no-repeat right 15px center
+	.content
+		table td
+			width: 100%
+			display: block
+
+		table th
+			display: none
+		
+
+		table tr 
+			margin-bottom: 10px
+			display: block
+		
+
+		table td 
+			display: block
+			text-align: right
+			font-size: 13px
+			padding-left: 15px
+			padding-right: 15px
+			border-bottom: 1px solid #d4d4d4
+		table td:last-child
+			border-bottom: none
+
+		table td:before 
+			content: attr(data-label)
+			float: left
+			text-transform: uppercase
+			font-weight: bold
+	.total-person,
+	.total-sum
+		display: block
+		text-align: left 
+		margin-left: 0
+		margin-top: 15px
+	.total
+		text-align: left
+	.total .btn
+		margin-left: 0
+		margin-top: 25px
+		width: 100%
+	.order-green-window
+		margin-top: 35px
+	.order-green-window .btn
+		font-size: 16px
+		padding: 15px 0
+	.mini-input-date-2
+		width: 150px !important
+	.user-avatar
+		margin-bottom: 25px
+		display: inline-block
+	.user-balance
+		padding-left: 15px
+		padding-right: 15px
+		width: 100%
+		margin-top: 35px
+	
+// ≥768px
++media-breakpoint-down(sm)
+	.total-sum .big-green
+		margin-bottom: 30px
+	.auth-box
+		background: $green
+		width: 100%
+		margin-left: 0
+		padding: 15px 0
+		text-align: left
+		padding-left: 35px
+		margin-top: 15px
+		i
+			top: 15px
+			left: 10px
+	.top-panel
+		padding-bottom: 0
+
+	.title-page 
+		padding: 15px 0
+		h1
+			font-size: 16px
+	.order-item .btn
+		width: 100%
+		margin-left: 0
+		margin-bottom: 5px
+		margin-top: 5px
+	.order-item .btn-send
+			margin-top: 35px !important
+	.order-info-box
+		margin-bottom: 15px
+	.user-page
+		text-align: center
+	
+   
+
+
+// ≥576px
++media-breakpoint-down(xs)
+	.person-sum-item 
+		.title
+			width: 100%
+			margin-bottom: 15px
+	nav
+		font-size: 12px
+		text-align: center
+	.title-page 
+		h1
+			text-align: center
+	.personal-box
+		position: relative
+		padding-left: 0
+		font-size: 16px
+		text-align: center
+		.avatar
+			position: relative
+			left: auto
+			top: auto
+			overflow: hidden
+			display: inline-block
+
+	.title-page
+		h1
+			display: block
+		.form-item
+			margin-left: 0
+			width: 100%
+			margin-top: 5px
+			
+
+
+/*==========  Mobile First  ==========*/
+
+// ≤576px
++media-breakpoint-up(sm)
+
+// ≤768px
++media-breakpoint-up(md)
+
+// ≤992px
++media-breakpoint-up(lg)
+
+// ≤1200px
++media-breakpoint-up(xl)

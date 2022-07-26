@@ -1,0 +1,34 @@
+
+function isFileExist() {
+    local FILE=${1}
+    [ -f ${FILE} ] || { echo "File ${FILE} does not exist"; return 1; };
+    return 0
+}
+
+function setEnvironment(){
+  CONFIGURATION=${1:-"dev"}
+  OPERATION=${2:-"BUILD"}
+  COMPOSE_FILES_WORKDIR="docker/compose" 
+  COMPOSE_FILE_MAIN="docker-compose.yml" 
+  COMPOSE_FILE_DEPLOY="${COMPOSE_FILES_WORKDIR}/docker-compose.deploy.${CONFIGURATION}.yml"
+  COMPOSE_FILE_BUILD="${COMPOSE_FILES_WORKDIR}/docker-compose.build.yml"
+  SECRETS_PATH="/var/smpt/secrets/outsource/les93/${CONFIGURATION}"
+  SHORT_COMMIT_ID=$(git rev-parse --short HEAD)
+  DOCKER_REGISTRY="registry.tx.smprojects.ru"
+
+  if [ "${OPERATION}" = DEPLOY ]; then
+    isFileExist ${COMPOSE_FILE_DEPLOY} || return 1
+    export COMPOSE_FILE_DEPLOY
+  else
+    isFileExist ${COMPOSE_FILE_BUILD}  || return 1
+    export COMPOSE_FILE_BUILD
+  fi
+
+  export DOCKER_BUILDKIT=1
+  export COMPOSE_DOCKER_CLI_BUILD=1
+  export CONFIGURATION
+  export SHORT_COMMIT_ID
+  export DOCKER_REGISTRY
+  export SECRETS_PATH
+  return 0
+}

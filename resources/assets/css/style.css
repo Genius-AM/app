@@ -1,0 +1,89 @@
+
+.card-block{
+     display: flex;
+     position: relative;
+     justify-content: center;
+     width: 591px;
+     height:492px ;
+     left: 80px;
+     top: 90%;
+     transform: translate(-14%, -50%);
+     margin-left: auto;
+     margin-right: auto;
+ }
+.text-auth{
+
+    width: 124px;
+    height: 23px;
+
+    font-family: 'Roboto 400';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23.1px;
+
+    color: #056A54;
+}
+
+.form-auth input[type=password]{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transform: translate(-29%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    width: 340px;
+    height: 60px;
+    background: #F5F5F5;
+    border-radius: 8px;
+}
+.form-auth input[type=text]{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transform: translate(-29%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    width: 340px;
+    height: 60px;
+
+    background: #F5F5F5;
+    border-radius: 8px;
+}
+.btn-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 140px;
+    gap: 10px;
+    transform: translate(-29%, -50%);
+    width: 340px;
+    height: 60px;
+    color: #056A54;
+    border: 1px solid #7ABAAC;
+    border-radius: 8px;
+}
+.auth-label{
+    color: #9B9B9B;
+    position: absolute;
+    pointer-events: none;
+    left: -50px;
+    right: auto;
+    top: -19px;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 40px;
+    transition: .3s;
+}
+.form-control:focus~.auth-label,
+.form-control:not(:focus):valid~.auth-label {
+    top: -30px;
+    font-size: 10px;
+}
+
+
+

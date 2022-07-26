@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  app:
+    image: ${DOCKER_REGISTRY}/outsource/les93/${CONFIGURATION}/app:latest
+    build:
+      args:
+        BUILD_CONFIGURATION: "prod"
+      context: ../../
+      dockerfile: docker/app/Dockerfile
+      labels:
+        ru.smartpetrol.build-server-prune.enabled: "true"
+
+  nginx:
+    image: ${DOCKER_REGISTRY}/outsource/les93/${CONFIGURATION}/nginx:latest
+    build:
+      context: ../../
+      dockerfile: docker/nginx/Dockerfile
+      labels:
+        ru.smartpetrol.build-server-prune.enabled: "true"

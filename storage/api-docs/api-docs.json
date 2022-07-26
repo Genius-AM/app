@@ -1,0 +1,3073 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Djipping API",
+        "version": "1.0.0"
+    },
+    "host": "llcsmart.beget.tech",
+    "basePath": "/api/V1/",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/Auth/Login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "\u0410\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f",
+                "description": "\u0410\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f",
+                "parameters": [
+                    {
+                        "name": "login",
+                        "in": "path",
+                        "description": "\u041b\u043e\u0433\u0438\u043d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "\u041f\u0430\u0440\u043e\u043b\u044c",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u0423\u0441\u043f\u0435\u0445",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "status": {
+                                        "description": "\u0421\u0442\u0430\u0442\u0443\u0441",
+                                        "type": "string"
+                                    },
+                                    "expires_in": {
+                                        "description": "\u0412\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442 \u0441\u0435\u043a\u0443\u043d\u0434\u044b \u0434\u043e \u0438\u0441\u0442\u0435\u0447\u0435\u043d\u0438\u0438 \u0442\u043e\u043a\u0435\u043d\u0430",
+                                        "type": "integer"
+                                    },
+                                    "user": {
+                                        "description": "\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f",
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "description": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f",
+                                        "type": "integer"
+                                    },
+                                    "role": {
+                                        "description": "\u0420\u043e\u043b\u044c",
+                                        "type": "string"
+                                    },
+                                    "role_id": {
+                                        "description": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0440\u043e\u043b\u0438",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "\u041e\u0448\u0438\u0431\u043a\u0430"
+                    }
+                }
+            }
+        },
+        "/Auth/Logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "\u0412\u044b\u0445\u043e\u0434 \u0438\u0437 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f",
+                "description": "\u0412\u044b\u0445\u043e\u0434 \u0438\u0437 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u0412\u044b\u0445\u043e\u0434 \u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d \u0443\u0441\u043f\u0435\u0448\u043d\u043e",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "message": {
+                                        "description": "\u041e\u0442\u0432\u0435\u0442\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "\u041d\u0435 \u0430\u0432\u0442\u043e\u0440\u0438\u0437\u043e\u0432\u0430\u043d"
+                    }
+                }
+            }
+        },
+        "/Auth/Refresh": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0442\u043e\u043a\u0435\u043d\u0430",
+                "description": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0442\u043e\u043a\u0435\u043d\u0430",
+                "responses": {
+                    "200": {
+                        "description": "\u0423\u0441\u043f\u0435\u0445",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "status": {
+                                        "description": "\u0421\u0442\u0430\u0442\u0443\u0441",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "\u041e\u0448\u0438\u0431\u043a\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f"
+                    }
+                }
+            }
+        },
+        "/Device/SaveDeviceToken": {
+            "post": {
+                "tags": [
+                    "device"
+                ],
+                "summary": "\u0421\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435 \u0442\u043e\u043a\u0435\u043d\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
+                "description": "\u0421\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435 \u0442\u043e\u043a\u0435\u043d\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
+                "parameters": [
+                    {
+                        "name": "device_id",
+                        "in": "path",
+                        "description": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "\u0422\u043e\u043a\u0435\u043d",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "device_ios",
+                        "in": "path",
+                        "description": "\u041a\u0430\u043a\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e, 1 \u0435\u0441\u043b\u0438 \u0430\u0439\u043e\u0441",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "device_android",
+                        "in": "path",
+                        "description": "\u041a\u0430\u043a\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e, 1 \u0435\u0441\u043b\u0438 \u0430\u043d\u0434\u0440\u043e\u0438\u0434",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "\u041f\u0440\u0438\u0448\u043b\u0438 \u043d\u0435 \u0432\u0441\u0435 \u0434\u0430\u043d\u043d\u044b\u0435!"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Device/GetAppVersion": {
+            "get": {
+                "tags": [
+                    "device"
+                ],
+                "summary": "\u0412\u043e\u0437\u0432\u0440\u0430\u0442 \u0432\u0435\u0440\u0441\u0438\u0438 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f",
+                "description": "\u0412\u043e\u0437\u0432\u0440\u0430\u0442 \u0432\u0435\u0440\u0441\u0438\u0438 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "version": {
+                                        "description": "\u0412\u0435\u0440\u0441\u0438\u044f \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Excursion/GetActive": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u043a\u0430\u0437\u043e\u0432",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u043a\u0430\u0437\u043e\u0432",
+                "parameters": [
+                    {
+                        "name": "subcategory_id",
+                        "in": "query",
+                        "description": "Subcategory Id",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "ID \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430, \u043d\u0443\u0436\u043d\u043e \u0434\u043b\u044f \u043a\u0432\u0430\u0434\u0440\u0430\u0446\u0438\u043a\u043b\u043e\u0432",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Date",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "DateTime": {
+                                        "type": "string"
+                                    },
+                                    "limit": {
+                                        "description": "\u0412\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a",
+                                        "type": "integer"
+                                    },
+                                    "detailed_limit": {
+                                        "properties": {
+                                            "men": {
+                                                "description": "\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0430\u044f \u0432\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c, \u0435\u0441\u043b\u0438 \u0435\u0441\u0442\u044c",
+                                                "type": "integer"
+                                            },
+                                            "women": {
+                                                "description": "\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0430\u044f \u0432\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c, \u0435\u0441\u043b\u0438 \u0435\u0441\u0442\u044c",
+                                                "type": "integer"
+                                            },
+                                            "kids": {
+                                                "description": "\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0430\u044f \u0432\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c, \u0435\u0441\u043b\u0438 \u0435\u0441\u0442\u044c",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "people": {
+                                        "description": "\u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0443\u0436\u0435 \u0435\u0441\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a",
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "status_id": {
+                                        "type": "integer"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory": {
+                                        "type": "string"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "integer"
+                                    },
+                                    "route": {
+                                        "type": "string"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "excursion_short": {
+                                        "type": "string"
+                                    },
+                                    "booked": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "400": {
+                        "description": "\u041f\u0440\u0438\u0448\u043b\u0438 \u043d\u0435 \u0432\u0441\u0435 \u0434\u0430\u043d\u043d\u044b\u0435!"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Excursion/GetArchive": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0430\u0440\u0445\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u043a\u0430\u0437\u043e\u0432",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0430\u0440\u0445\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u043a\u0430\u0437\u043e\u0432",
+                "parameters": [
+                    {
+                        "name": "subcategory_id",
+                        "in": "path",
+                        "description": "Subcategory Id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "Date",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "DateTime": {
+                                        "type": "string"
+                                    },
+                                    "limit": {
+                                        "description": "\u0412\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a",
+                                        "type": "integer"
+                                    },
+                                    "people": {
+                                        "description": "\u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0443\u0436\u0435 \u0435\u0441\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a",
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "status_id": {
+                                        "type": "integer"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory": {
+                                        "type": "string"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "integer"
+                                    },
+                                    "route": {
+                                        "type": "string"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "excursion_short": {
+                                        "type": "string"
+                                    },
+                                    "booked": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "400": {
+                        "description": "\u0417\u0430 \u0434\u0430\u043d\u043d\u044b\u043c \u0432\u043e\u0434\u0438\u0442\u0435\u043b\u0435\u043c \u043c\u0430\u0448\u0438\u043d\u0430 \u043d\u0435 \u0437\u0430\u043a\u0440\u0435\u043f\u043b\u0435\u043d\u0430!"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Excursion/Cancel": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u044d\u043a\u0441\u043a\u0443\u0440\u0441\u0438\u044e \u0441\u043e \u0432\u0441\u0435\u043c\u0438 \u0437\u0430\u043a\u0430\u0437\u0430\u043c\u0438",
+                "description": "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u044d\u043a\u0441\u043a\u0443\u0440\u0441\u0438\u044e \u0441\u043e \u0432\u0441\u0435\u043c\u0438 \u0437\u0430\u043a\u0430\u0437\u0430\u043c\u0438",
+                "parameters": [
+                    {
+                        "name": "excursion_id",
+                        "in": "query",
+                        "description": "Excursion Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "message",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Excursion/Orders/Get": {
+            "get": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u0437\u0430\u043a\u0430\u0437\u0430 \u0441\u043e \u0441\u043f\u0438\u0441\u043a\u043e\u043c \u0437\u0430\u044f\u0432\u043e\u043a ",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u0437\u0430\u043a\u0430\u0437\u0430 \u0441\u043e \u0441\u043f\u0438\u0441\u043a\u043e\u043c \u0437\u0430\u044f\u0432\u043e\u043a ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Excursion Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "DateTime": {
+                                        "type": "string"
+                                    },
+                                    "limit": {
+                                        "description": "\u0412\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a",
+                                        "type": "integer"
+                                    },
+                                    "people": {
+                                        "description": "\u0421\u043a\u043e\u043b\u044c\u043a\u043e \u0443\u0436\u0435 \u0435\u0441\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a",
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "status_id": {
+                                        "type": "integer"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory": {
+                                        "type": "string"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "integer"
+                                    },
+                                    "route": {
+                                        "type": "string"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "excursion_short": {
+                                        "type": "string"
+                                    },
+                                    "booked": {
+                                        "type": "integer"
+                                    },
+                                    "orders": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "date": {
+                                                    "type": "string"
+                                                },
+                                                "time": {
+                                                    "type": "string"
+                                                },
+                                                "DateTime": {
+                                                    "type": "string"
+                                                },
+                                                "men": {
+                                                    "type": "integer"
+                                                },
+                                                "women": {
+                                                    "type": "integer"
+                                                },
+                                                "kids": {
+                                                    "type": "integer"
+                                                },
+                                                "status": {
+                                                    "type": "string"
+                                                },
+                                                "status_id": {
+                                                    "type": "integer"
+                                                },
+                                                "client_id": {
+                                                    "type": "integer"
+                                                },
+                                                "client_name": {
+                                                    "type": "string"
+                                                },
+                                                "client_comment": {
+                                                    "type": "string"
+                                                },
+                                                "client_phone": {
+                                                    "type": "string"
+                                                },
+                                                "client_phone_2": {
+                                                    "type": "string"
+                                                },
+                                                "client_address": {
+                                                    "type": "string"
+                                                },
+                                                "client_point": {
+                                                    "type": "string"
+                                                },
+                                                "client_prepayment": {
+                                                    "type": "integer"
+                                                },
+                                                "client_price": {
+                                                    "type": "integer"
+                                                },
+                                                "client_food": {
+                                                    "type": "integer"
+                                                },
+                                                "calls_count": {
+                                                    "type": "integer"
+                                                },
+                                                "last_call": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "400": {
+                        "description": "\u041e\u0448\u0438\u0431\u043a\u0430"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Excursion/Orders/CallRecord": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u0423\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u0441\u0447\u0435\u0442\u0447\u0438\u043a\u0430 \u0437\u0432\u043e\u043d\u043a\u043e\u0432 \u043f\u043e \u0437\u0430\u044f\u0432\u043a\u0435",
+                "description": "\u0423\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u0441\u0447\u0435\u0442\u0447\u0438\u043a\u0430 \u0437\u0432\u043e\u043d\u043a\u043e\u0432 \u043f\u043e \u0437\u0430\u044f\u0432\u043a\u0435 \u043f\u043e order_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Order/Agree": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u0423\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u0423\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438 \u043f\u043e order_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Order/Cancel": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u041e\u0442\u043c\u0435\u043d\u0430 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u041e\u0442\u043c\u0435\u043d\u0430 \u0437\u0430\u044f\u0432\u043a\u0438 \u043f\u043e order_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "reason",
+                        "in": "path",
+                        "description": "Reason of cancel",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Order/CancelAfterAccept": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u041e\u0442\u043c\u0435\u043d\u0430 \u0437\u0430\u044f\u0432\u043a\u0438 \u043f\u043e\u0441\u043b\u0435 \u043f\u0440\u0438\u043d\u044f\u0442\u0438\u044f",
+                "description": "\u041e\u0442\u043c\u0435\u043d\u0430 \u0437\u0430\u044f\u0432\u043a\u0438 \u043f\u043e\u0441\u043b\u0435 \u043f\u0440\u0438\u043d\u044f\u0442\u0438\u044f \u043f\u043e order_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "reason",
+                        "in": "path",
+                        "description": "Reason of cancel",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/BookedTime/Get": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0432\u0441\u0435\u0445 \u0431\u0440\u043e\u043d\u0435\u0439",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0432\u0441\u0435\u0445 \u0431\u0440\u043e\u043d\u0435\u0439 \u043f\u043e \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438 \u0438 \u0434\u0430\u0442\u0435",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "path",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "category_id": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "integer"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "route_name": {
+                                        "type": "string"
+                                    },
+                                    "day": {
+                                        "type": "string"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time_id": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "booked": {
+                                        "description": "0 = \u043e\u0442\u043a\u0440\u044b\u0442\u043e, 1 = \u0437\u0430\u043a\u0440\u044b\u0442\u043e",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Driver/BookTime/Set": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u0414\u043e\u0431\u0430\u0432\u043b\u044f\u0435\u043c \u0438\u043b\u0438 \u0438\u0437\u043c\u0435\u043d\u044f\u0435\u043c \u043d\u0430 \u043f\u0440\u043e\u0442\u0438\u0432\u043e\u043f\u043e\u043b\u043e\u0436\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0431\u0440\u043e\u043d\u0438",
+                "description": "\u0414\u043e\u0431\u0430\u0432\u043b\u044f\u0435\u043c \u0438\u043b\u0438 \u0438\u0437\u043c\u0435\u043d\u044f\u0435\u043c \u043d\u0430 \u043f\u0440\u043e\u0442\u0438\u0432\u043e\u043f\u043e\u043b\u043e\u0436\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0431\u0440\u043e\u043d\u0438",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "path",
+                        "description": "Subcategory id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "route_id",
+                        "in": "path",
+                        "description": "Route id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "path",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/PassengersAmount/Set": {
+            "post": {
+                "tags": [
+                    "drivers"
+                ],
+                "summary": "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043b-\u0432\u0430 \u043c\u0435\u0441\u0442  \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0439 \u0440\u0435\u0439\u0441",
+                "description": "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043b-\u0432\u0430 \u043c\u0435\u0441\u0442  \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0439 \u0440\u0435\u0439\u0441",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "amount_men",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount_women",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount_kids",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Driver/Quadbike/PassengersAmount/Set": {
+            "post": {
+                "tags": [
+                    "drivers, quadbike"
+                ],
+                "summary": "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043b-\u0432\u0430 \u043c\u0435\u0441\u0442 \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0439 \u0440\u0435\u0439\u0441",
+                "description": "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043b-\u0432\u0430 \u043c\u0435\u0441\u0442  \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0439 \u0440\u0435\u0439\u0441",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "amount_men",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount_women",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount_kids",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/Driver/Sea/PassengersAmount/Set": {
+            "post": {
+                "tags": [
+                    "drivers, sea"
+                ],
+                "summary": "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043b-\u0432\u0430 \u043c\u0435\u0441\u0442 \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0439 \u0440\u0435\u0439\u0441",
+                "description": "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043b-\u0432\u0430 \u043c\u0435\u0441\u0442  \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0439 \u0440\u0435\u0439\u0441",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "amount_men",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount_women",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "amount_kids",
+                        "in": "query",
+                        "description": "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043c\u0443\u0436\u0447\u0438\u043d",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/Driver/Sea/BookTime/Set": {
+            "post": {
+                "tags": [
+                    "drivers, sea"
+                ],
+                "summary": "\u0414\u043e\u0431\u0430\u0432\u043b\u044f\u0435\u043c \u0438\u043b\u0438 \u0438\u0437\u043c\u0435\u043d\u044f\u0435\u043c \u043d\u0430 \u043f\u0440\u043e\u0442\u0438\u0432\u043e\u043f\u043e\u043b\u043e\u0436\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0431\u0440\u043e\u043d\u0438",
+                "description": "\u0414\u043e\u0431\u0430\u0432\u043b\u044f\u0435\u043c \u0438\u043b\u0438 \u0438\u0437\u043c\u0435\u043d\u044f\u0435\u043c \u043d\u0430 \u043f\u0440\u043e\u0442\u0438\u0432\u043e\u043f\u043e\u043b\u043e\u0436\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0431\u0440\u043e\u043d\u0438",
+                "parameters": [
+                    {
+                        "name": "time_id",
+                        "in": "path",
+                        "description": "Time id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Lists/Addresses/All": {
+            "get": {
+                "tags": [
+                    "lists"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0430\u0434\u0440\u0435\u0441\u043e\u0432",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0430\u0434\u0440\u0435\u0441\u043e\u0432",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Address"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Lists/AgeCategories/All": {
+            "get": {
+                "tags": [
+                    "lists"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0439 \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0439 \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/AgeCategory"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Lists/Companies/All": {
+            "get": {
+                "tags": [
+                    "lists"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0439",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0439",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Company"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Lists/Companies/Info": {
+            "get": {
+                "tags": [
+                    "lists"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u043e\u0439 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u043e\u0439 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Company id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Company"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Lists/Routes/All": {
+            "get": {
+                "tags": [
+                    "lists"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u0432",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u0432",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Category",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "query",
+                        "description": "Subcategory",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Route"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Order/GetActive": {
+            "post": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u044f\u0432\u043e\u043a",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u044f\u0432\u043e\u043a",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "DateTime": {
+                                        "type": "string"
+                                    },
+                                    "men": {
+                                        "type": "integer"
+                                    },
+                                    "women": {
+                                        "type": "integer"
+                                    },
+                                    "kids": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "status_id": {
+                                        "type": "integer"
+                                    },
+                                    "client_id": {
+                                        "type": "integer"
+                                    },
+                                    "client_name": {
+                                        "type": "string"
+                                    },
+                                    "client_comment": {
+                                        "type": "string"
+                                    },
+                                    "client_prepayment": {
+                                        "type": "integer"
+                                    },
+                                    "client_price": {
+                                        "type": "integer"
+                                    },
+                                    "client_phone": {
+                                        "type": "string"
+                                    },
+                                    "client_phone_2": {
+                                        "type": "string"
+                                    },
+                                    "client_food": {
+                                        "type": "integer"
+                                    },
+                                    "client_address": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory": {
+                                        "type": "string"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "integer"
+                                    },
+                                    "route": {
+                                        "type": "string"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "excursion_short": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Order/GetArchive": {
+            "post": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0430\u0440\u0445\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u044f\u0432\u043e\u043a",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0430\u0440\u0445\u0438\u0432\u043d\u044b\u0445 \u0437\u0430\u044f\u0432\u043e\u043a",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "DateTime": {
+                                        "type": "string"
+                                    },
+                                    "men": {
+                                        "type": "integer"
+                                    },
+                                    "women": {
+                                        "type": "integer"
+                                    },
+                                    "kids": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "client_id": {
+                                        "type": "integer"
+                                    },
+                                    "client_name": {
+                                        "type": "string"
+                                    },
+                                    "client_comment": {
+                                        "type": "string"
+                                    },
+                                    "client_prepayment": {
+                                        "type": "integer"
+                                    },
+                                    "client_price": {
+                                        "type": "integer"
+                                    },
+                                    "client_phone": {
+                                        "type": "string"
+                                    },
+                                    "client_phone_2": {
+                                        "type": "string"
+                                    },
+                                    "client_food": {
+                                        "type": "integer"
+                                    },
+                                    "client_address": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory": {
+                                        "type": "string"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "integer"
+                                    },
+                                    "route": {
+                                        "type": "string"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "excursion_short": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Order/Add": {
+            "post": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Category Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "query",
+                        "description": "Subcategory Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "men",
+                        "in": "query",
+                        "description": "Men amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "women",
+                        "in": "query",
+                        "description": "Women amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "kids",
+                        "in": "query",
+                        "description": "Kids amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_name",
+                        "in": "query",
+                        "description": "Client name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_comment",
+                        "in": "query",
+                        "description": "Client comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_prepayment",
+                        "in": "query",
+                        "description": "Client prepayment",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Price for djipping",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone",
+                        "in": "query",
+                        "description": "Client phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone_2",
+                        "in": "query",
+                        "description": "Client second phone",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_food",
+                        "in": "query",
+                        "description": "Has client meal? (1 - yes, 0 - no)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address_id",
+                        "in": "query",
+                        "description": "POINT ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_point_id",
+                        "in": "query",
+                        "description": "POINT ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address",
+                        "in": "query",
+                        "description": "Not required for dayving, for another properties are required",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "age_categories",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID age category",
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "description": "amount",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Order/Edit": {
+            "post": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "path",
+                        "description": "Subcategory Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "route_id",
+                        "in": "path",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "description": "Editing order id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "path",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "men",
+                        "in": "path",
+                        "description": "Men amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "women",
+                        "in": "path",
+                        "description": "Women amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "kids",
+                        "in": "path",
+                        "description": "Kids amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_name",
+                        "in": "path",
+                        "description": "Client name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_comment",
+                        "in": "path",
+                        "description": "Client comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_prepayment",
+                        "in": "path",
+                        "description": "Client prepayment",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "Price for djipping",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone",
+                        "in": "path",
+                        "description": "Client phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone_2",
+                        "in": "path",
+                        "description": "Client second phone",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_food",
+                        "in": "path",
+                        "description": "Has client meal? (1 - yes, 0 - no)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address_id",
+                        "in": "path",
+                        "description": "POINT ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_point_id",
+                        "in": "path",
+                        "description": "POINT ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address",
+                        "in": "path",
+                        "description": "Not required for dayving, for another properties are required",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "age_categories",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID age category",
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "description": "amount",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Order/Get": {
+            "get": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0434\u043d\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0434\u043d\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "DateTime": {
+                                        "type": "string"
+                                    },
+                                    "men": {
+                                        "type": "integer"
+                                    },
+                                    "women": {
+                                        "type": "integer"
+                                    },
+                                    "kids": {
+                                        "type": "integer"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "status_id": {
+                                        "type": "integer"
+                                    },
+                                    "client_id": {
+                                        "type": "integer"
+                                    },
+                                    "client_name": {
+                                        "type": "string"
+                                    },
+                                    "client_comment": {
+                                        "type": "string"
+                                    },
+                                    "client_prepayment": {
+                                        "type": "integer"
+                                    },
+                                    "client_price": {
+                                        "type": "integer"
+                                    },
+                                    "client_phone": {
+                                        "type": "string"
+                                    },
+                                    "client_phone_2": {
+                                        "type": "string"
+                                    },
+                                    "client_food": {
+                                        "type": "integer"
+                                    },
+                                    "client_address": {
+                                        "type": "string"
+                                    },
+                                    "client_point": {
+                                        "type": "string"
+                                    },
+                                    "client_point_id": {
+                                        "type": "integer"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory": {
+                                        "type": "string"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "integer"
+                                    },
+                                    "route": {
+                                        "type": "string"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "excursion_short": {
+                                        "type": "string"
+                                    },
+                                    "age_categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "amount": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Order/Cancel": {
+            "post": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041e\u0442\u043c\u0435\u043d\u0430 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u041e\u0442\u043c\u0435\u043d\u0430 \u0437\u0430\u044f\u0432\u043a\u0438 \u043f\u043e order_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Order already canceled"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Times/Get": {
+            "post": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0432 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u0443\u044e \u0434\u0430\u0442\u0443 \u0438 subcategory_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subcategory Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "route": {
+                                        "type": "string"
+                                    },
+                                    "route_id": {
+                                        "type": "integer"
+                                    },
+                                    "times": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "DateTime": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Categories/Get": {
+            "get": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Category"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/Subcategories/Get": {
+            "get": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0441\u0435 \u043f\u043e\u0434\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0441\u0435 \u043f\u043e\u0434\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438 \u0438\u0437 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Category Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/FreePlaces/Get": {
+            "post": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0441\u0435 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0435 \u043c\u0435\u0441\u0442\u0430",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0441\u0435 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0435 \u043c\u0435\u0441\u0442\u0430",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "path",
+                        "description": "Subcategory Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "route_id",
+                        "in": "path",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "path",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/Manager/Routes/Get": {
+            "get": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0441\u0435 \u043c\u0430\u0448\u0440\u0443\u0442\u044b",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0441\u0435 \u043c\u0430\u0448\u0440\u0443\u0442\u044b \u0438\u0441\u0445\u043e\u0434\u044f \u0438\u0437 \u043f\u043e\u0434\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subcategory Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "price_men": {
+                                        "type": "string"
+                                    },
+                                    "price_women": {
+                                        "type": "string"
+                                    },
+                                    "price_kids": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    }
+                }
+            }
+        },
+        "/Manager/TimesAndLimits": {
+            "get": {
+                "tags": [
+                    "managers"
+                ],
+                "summary": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0435 \u043c\u0435\u0441\u0442\u0430",
+                "description": "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0435 \u043c\u0435\u0441\u0442\u0430",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "path",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "path",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "properties": {
+                                "men": {
+                                    "description": "men limit",
+                                    "type": "number"
+                                },
+                                "women": {
+                                    "description": "women limit",
+                                    "type": "number"
+                                },
+                                "kids": {
+                                    "description": "kids limit",
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/Manager/Quadbike/Order/Add": {
+            "post": {
+                "tags": [
+                    "managers, quadbike"
+                ],
+                "summary": "\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "company Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "men",
+                        "in": "query",
+                        "description": "Men amount",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "women",
+                        "in": "query",
+                        "description": "Women amount",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "kids",
+                        "in": "query",
+                        "description": "Kids amount",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_name",
+                        "in": "query",
+                        "description": "Client name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_comment",
+                        "in": "query",
+                        "description": "Client comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_prepayment",
+                        "in": "query",
+                        "description": "Client prepayment",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone",
+                        "in": "query",
+                        "description": "Client phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone_2",
+                        "in": "query",
+                        "description": "Client second phone",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_food",
+                        "in": "query",
+                        "description": "Has client meal? (1 - yes, 0 - no)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address",
+                        "in": "query",
+                        "description": "ID client address",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_point_id",
+                        "in": "query",
+                        "description": "ID client address",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "age_categories",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID age category",
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "description": "amount",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/Manager/Quadbike/Order/Edit": {
+            "post": {
+                "tags": [
+                    "managers, quadbike"
+                ],
+                "summary": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "Company Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "order_id",
+                        "in": "query",
+                        "description": "Editing order id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "men",
+                        "in": "query",
+                        "description": "Men amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "women",
+                        "in": "query",
+                        "description": "Women amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "kids",
+                        "in": "query",
+                        "description": "Kids amount",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_name",
+                        "in": "query",
+                        "description": "Client name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_comment",
+                        "in": "query",
+                        "description": "Client comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_prepayment",
+                        "in": "query",
+                        "description": "Client prepayment",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone",
+                        "in": "query",
+                        "description": "Client phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone_2",
+                        "in": "query",
+                        "description": "Client second phone",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_food",
+                        "in": "query",
+                        "description": "Has client meal? (1 - yes, 0 - no)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address",
+                        "in": "query",
+                        "description": "Client Address, ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_point_id",
+                        "in": "query",
+                        "description": "Client Address, ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "age_categories",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID age category",
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "description": "amount",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/Manager/Quadbike/TimesAndLimits": {
+            "get": {
+                "tags": [
+                    "managers, quadbike"
+                ],
+                "summary": "\u0412\u0440\u0435\u043c\u044f \u0438 \u043b\u0438\u043c\u0438\u0442\u044b",
+                "description": "\u0412\u0440\u0435\u043c\u044f \u0438 \u043b\u0438\u043c\u0438\u0442\u044b",
+                "parameters": [
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "Company ID",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "route_id": {
+                                        "description": "Route",
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "description": "CompanyID",
+                                        "type": "integer"
+                                    },
+                                    "DateTime": {
+                                        "description": "DateTime",
+                                        "type": "string"
+                                    },
+                                    "men": {
+                                        "description": "men limit",
+                                        "type": "number"
+                                    },
+                                    "women": {
+                                        "description": "women limit",
+                                        "type": "number"
+                                    },
+                                    "kids": {
+                                        "description": "kids limit",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/Manager/Sea/Order/Add": {
+            "post": {
+                "tags": [
+                    "managers, sea"
+                ],
+                "summary": "\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "men",
+                        "in": "query",
+                        "description": "\u0412\u0437\u0440\u043e\u0441\u043b\u044b\u0435",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "kids",
+                        "in": "query",
+                        "description": "\u0414\u0435\u0442\u0438",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_name",
+                        "in": "query",
+                        "description": "Client name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_comment",
+                        "in": "query",
+                        "description": "Client comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_prepayment",
+                        "in": "query",
+                        "description": "Client prepayment",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone",
+                        "in": "query",
+                        "description": "Client phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone_2",
+                        "in": "query",
+                        "description": "Client second phone",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_food",
+                        "in": "query",
+                        "description": "Has client meal? (1 - yes, 0 - no)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address",
+                        "in": "query",
+                        "description": "Client address",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_point_id",
+                        "in": "query",
+                        "description": "ID client address",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "age_categories",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID age category",
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "description": "amount",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/Manager/Sea/Order/Edit": {
+            "post": {
+                "tags": [
+                    "managers, sea"
+                ],
+                "summary": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "description": "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0437\u0430\u044f\u0432\u043a\u0438",
+                "parameters": [
+                    {
+                        "name": "route_id",
+                        "in": "query",
+                        "description": "Route Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "order_id",
+                        "in": "query",
+                        "description": "Editing order id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "men",
+                        "in": "query",
+                        "description": "\u0412\u0437\u0440\u043e\u0441\u043b\u044b\u0435",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "kids",
+                        "in": "query",
+                        "description": "\u0414\u0435\u0442\u0438",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_name",
+                        "in": "query",
+                        "description": "Client name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_comment",
+                        "in": "query",
+                        "description": "Client comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_prepayment",
+                        "in": "query",
+                        "description": "Client prepayment",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone",
+                        "in": "query",
+                        "description": "Client phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_phone_2",
+                        "in": "query",
+                        "description": "Client second phone",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_food",
+                        "in": "query",
+                        "description": "Has client meal? (1 - yes, 0 - no)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_address",
+                        "in": "query",
+                        "description": "Client Address, ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_point_id",
+                        "in": "query",
+                        "description": "Client Address, ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "age_categories",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "description": "ID age category",
+                                        "type": "integer"
+                                    },
+                                    "amount": {
+                                        "description": "amount",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/Manager/Sea/TimesAndLimits": {
+            "get": {
+                "tags": [
+                    "managers, sea"
+                ],
+                "summary": "\u0412\u0440\u0435\u043c\u044f \u0438 \u043b\u0438\u043c\u0438\u0442\u044b",
+                "description": "\u0412\u0440\u0435\u043c\u044f \u0438 \u043b\u0438\u043c\u0438\u0442\u044b",
+                "parameters": [
+                    {
+                        "name": "DateTime",
+                        "in": "query",
+                        "description": "DateTime",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "query",
+                        "description": "Subcategory Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "route_id": {
+                                        "description": "Route",
+                                        "type": "integer"
+                                    },
+                                    "DateTime": {
+                                        "description": "DateTime",
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "description": "Price",
+                                        "type": "string"
+                                    },
+                                    "duration": {
+                                        "description": "Duration",
+                                        "type": "string"
+                                    },
+                                    "men": {
+                                        "description": "\u0412\u0437\u0440\u043e\u0441\u043b\u044b\u0435",
+                                        "type": "number"
+                                    },
+                                    "kids": {
+                                        "description": "\u0414\u0435\u0442\u0438",
+                                        "type": "number"
+                                    },
+                                    "time_id": {
+                                        "description": "Time",
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not of all required data came"
+                    },
+                    "401": {
+                        "description": "Unauthorized user"
+                    },
+                    "405": {
+                        "description": "User's token invalidate"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Address": {
+            "properties": {
+                "id": {
+                    "description": "App\\Address",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "App\\Address",
+                    "type": "string"
+                }
+            }
+        },
+        "Category": {
+            "properties": {
+                "id": {
+                    "description": "App\\Category",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "App\\Category",
+                    "type": "string"
+                }
+            }
+        },
+        "AgeCategory": {
+            "properties": {
+                "id": {
+                    "description": "App\\Address",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "App\\Address",
+                    "type": "string"
+                }
+            }
+        },
+        "Company": {
+            "properties": {
+                "id": {
+                    "description": "App\\Models\\Company",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "App\\Models\\Company",
+                    "type": "string"
+                }
+            }
+        },
+        "Route": {
+            "properties": {
+                "id": {
+                    "description": "App\\Route",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "App\\Route",
+                    "type": "string"
+                },
+                "price_men": {
+                    "description": "App\\Route",
+                    "type": "integer"
+                },
+                "price_women": {
+                    "description": "App\\Route",
+                    "type": "integer"
+                },
+                "price_kids": {
+                    "description": "App\\Route",
+                    "type": "integer"
+                },
+                "price": {
+                    "description": "App\\Route",
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "responses": {
+        "400": {
+            "description": "Something went wrong"
+        },
+        "405": {
+            "description": "User's token invalidate"
+        }
+    }
+}

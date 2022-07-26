@@ -1,0 +1,73 @@
+version: "3.9"
+
+secrets:
+  env_file:
+    file: ${SECRETS_PATH}/app/.env
+  mysql_root_password:
+    file: ${SECRETS_PATH}/mysql/root_password
+  mysql_user_password:
+    file: ${SECRETS_PATH}/mysql/user_password
+
+services:
+  app:
+    image: ${DOCKER_REGISTRY}/outsource/les93/${CONFIGURATION}/app:latest
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == les93
+    secrets:
+      - source: env_file
+        target: /var/www/html/.env
+    networks:
+      - internal
+
+  nginx:
+    image: ${DOCKER_REGISTRY}/outsource/les93/${CONFIGURATION}/nginx:latest
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == les93
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.services.les93-test.loadBalancer.server.port=8000"
+        - "traefik.http.routers.les93-test.rule=Host(`test.app.les93.smprojects.ru`)"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+    networks:
+      - internal
+      - proxy
+
+  db:
+    image: mysql:8.0.27
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == les93
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      MYSQL_USER: llcsmart_ales93
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_user_password
+      MYSQL_DATABASE: llcsmart_ales93
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+    networks:
+      - internal
+    secrets:
+      - mysql_root_password
+      - mysql_user_password
+    volumes:
+      - mysql-data:/var/lib/mysql/
+
+volumes:
+  mysql-data:
+
+networks:
+  internal:
+    external: false
+  proxy:
+    external: true

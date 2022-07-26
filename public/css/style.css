@@ -1,0 +1,94 @@
+
+.main-background{
+    background: url("img/background.png");
+}
+.card-block{
+
+    /*position: relative;*/
+
+    width: 591px;
+    height:492px ;
+    position: fixed; top: 67%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+.text-auth{
+    width: 124px;
+    height: 23px;
+    font-family: 'Roboto 400';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23.1px;
+    color: #056A54;
+    margin-left: 211px;
+}
+.form-auth input[type=password]{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transform: translate(-29%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 340px;
+    height: 60px;
+    background: #F5F5F5;
+    border-radius: 8px;
+}
+.form-auth input[type=text]{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transform: translate(-29%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 340px;
+    height: 60px;
+    background: #F5F5F5;
+    border-radius: 8px;
+}
+.btn-text{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 140px;
+    gap: 10px;
+    transform: translate(-29%, -50%);
+    min-width: 340px;
+    height: 60px;
+    color: #056A54;
+    border: 1px solid #7ABAAC;
+    border-radius: 8px;
+}
+.passwordlable{
+    color: #9B9B9B;
+    position: absolute;
+    pointer-events: none;
+    left: -50px;
+    right: auto;
+    top: -19px;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 40px;
+    transition: .3s;
+}
+.form-control:focus~.passwordlable,
+.form-control:not(:focus):valid~.passwordlable {
+    top: -30px;
+    font-size: 10px;
+}
+.password-control{
+    position: absolute;
+    top: -12px;
+    right: -57px;
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    background-image: url("public/images/Hide.png");
+    background-position: 0px 0px;
+    background-repeat: no-repeat no-repeat;
+}
